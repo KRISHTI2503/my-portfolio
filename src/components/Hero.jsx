@@ -7,6 +7,103 @@ function Particle({ style }) {
   return <div className="absolute w-1 h-1 rounded-full bg-teal-400/40 animate-float" style={style} />
 }
 
+function StatCounter({ target, label, suffix = '' }) {
+  const [count, setCount] = useState(0)
+  const [started, setStarted] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started) setStarted(true)
+    }, { threshold: 0.5 })
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [started])
+
+  useEffect(() => {
+    if (!started) return
+    const isFloat = String(target).includes('.')
+    const numTarget = parseFloat(target)
+    const duration = 1200
+    const steps = 40
+    const increment = numTarget / steps
+    let current = 0
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= numTarget) {
+        setCount(numTarget)
+        clearInterval(timer)
+      } else {
+        setCount(isFloat ? parseFloat(current.toFixed(2)) : Math.floor(current))
+      }
+    }, duration / steps)
+    return () => clearInterval(timer)
+  }, [started, target])
+
+  const display = String(target).includes('.') ? count.toFixed(2) : Math.floor(count)
+
+  return (
+    <div ref={ref}
+      className="flex flex-col items-center px-4 py-2.5 rounded-full border border-teal-500/40 bg-teal-500/8 backdrop-blur-sm hover:border-teal-400/70 hover:bg-teal-500/15 transition-all duration-300 min-w-[90px]"
+    >
+      <span className="text-teal-300 font-black text-base font-mono leading-tight">
+        {display}{suffix}
+      </span>
+      <span className="text-slate-400 text-[11px] font-medium mt-0.5 whitespace-nowrap">{label}</span>
+    </div>
+  )
+}
+
+function TerminalCard() {
+  return (
+    <div className="hidden lg:block absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 z-20 w-[300px] xl:w-[340px]">
+      <div className="rounded-2xl border border-white/10 bg-[#0d1117] shadow-[0_8px_40px_rgba(0,0,0,0.5),0_0_0_1px_rgba(13,148,136,0.15)] overflow-hidden">
+        {/* Terminal header */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-white/[0.04] border-b border-white/[0.07]">
+          <span className="w-3 h-3 rounded-full bg-red-500/80" />
+          <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+          <span className="w-3 h-3 rounded-full bg-green-500/80" />
+          <span className="ml-2 text-slate-500 text-xs font-mono">portfolio.js</span>
+        </div>
+        {/* Code body */}
+        <div className="p-5 font-mono text-[13px] leading-relaxed">
+          <div>
+            <span className="text-purple-400">function</span>
+            {' '}
+            <span className="text-teal-300">solve</span>
+            <span className="text-slate-300">(</span>
+            <span className="text-orange-300">problem</span>
+            <span className="text-slate-300">) {'{'}</span>
+          </div>
+          <div className="ml-4 mt-1">
+            <span className="text-cyan-400">think</span>
+            <span className="text-slate-300">();</span>
+          </div>
+          <div className="ml-4">
+            <span className="text-cyan-400">build</span>
+            <span className="text-slate-300">();</span>
+          </div>
+          <div className="ml-4">
+            <span className="text-cyan-400">ship</span>
+            <span className="text-slate-300">();</span>
+          </div>
+          <div className="mt-1">
+            <span className="text-slate-300">{'}'}</span>
+          </div>
+          <div className="mt-3 text-slate-500 text-xs">
+            <span className="text-teal-500/70">// </span>
+            <span className="text-slate-500">repeat until awesome</span>
+          </div>
+          <div className="mt-3 flex items-center gap-2">
+            <span className="text-teal-400/70 text-xs">▶</span>
+            <span className="text-green-400 text-xs">Output: success ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0)
   const [displayed, setDisplayed] = useState('')
@@ -60,11 +157,8 @@ export default function Hero() {
     }
     resize()
     window.addEventListener('resize', resize)
-
-    // Redraw grid when theme changes
     const observer = new MutationObserver(drawGrid)
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-
     return () => {
       window.removeEventListener('resize', resize)
       observer.disconnect()
@@ -94,10 +188,10 @@ export default function Hero() {
 
       {particles.map((p, i) => <Particle key={i} style={p.style} />)}
 
+      {/* Floating terminal card — desktop only */}
+      <TerminalCard />
+
       <div className="relative z-10 w-full max-w-4xl mx-auto text-center py-24 sm:py-32">
-
-        
-
         {/* Name */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-4 leading-tight tracking-tight animate-slide-up">
           Hi, I'm <span className="gradient-text">Krishti Patel</span>
@@ -117,11 +211,10 @@ export default function Hero() {
           B.Tech IT Student&nbsp;&nbsp;|&nbsp;&nbsp;CPI: 8.57
         </p>
 
-        <p className="text-slate-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-8 sm:mb-12 leading-relaxed px-1 sm:px-2">
-        </p>
+        <p className="text-slate-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed px-1 sm:px-2"></p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-8 sm:mb-10">
           <a href="#projects" className="btn-primary w-full sm:w-auto text-center">
             Explore Projects
           </a>
@@ -135,6 +228,13 @@ export default function Hero() {
             </svg>
             View Resume
           </button>
+        </div>
+
+        {/* Stat counter pills */}
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4" data-aos="fade-up" data-aos-delay="200">
+          <StatCounter target={4} label="Projects" />
+          <StatCounter target={3} label="Hackathons" />
+          <StatCounter target={8.57} label="CPI" />
         </div>
       </div>
 

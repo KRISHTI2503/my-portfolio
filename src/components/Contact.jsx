@@ -1,13 +1,10 @@
+import { useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import SectionTitle from './SectionTitle'
 
+const EMAIL = 'krishti2503@gmail.com'
+
 const socials = [
-  {
-    label: 'Email',
-    href: 'mailto:krishti2503@gmail.com',
-    isStroke: true,
-    path: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-  },
   {
     label: 'GitHub',
     href: 'https://github.com/KRISHTI2503',
@@ -22,6 +19,61 @@ const socials = [
   },
 ]
 
+function CopyEmailRow() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  return (
+    <div className="reveal reveal-delay-3 flex items-center justify-center gap-3 mb-8">
+      {/* Email icon + address */}
+      <a
+        href={`mailto:${EMAIL}`}
+        className="group flex items-center gap-2 text-slate-400 hover:text-teal-400 transition-colors duration-200"
+      >
+        <span className="w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center group-hover:border-teal-400/50 group-hover:bg-teal-400/5 group-hover:shadow-[0_0_16px_rgba(13,148,136,0.2)] transition-all duration-300">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </span>
+        <span className="text-sm font-mono">{EMAIL}</span>
+      </a>
+
+      {/* Copy button */}
+      <button
+        onClick={handleCopy}
+        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-200
+          ${copied
+            ? 'bg-green-500/20 border-green-500/40 text-green-400'
+            : 'bg-teal-500/10 border-teal-500/30 text-teal-400 hover:bg-teal-500/20 hover:border-teal-400/60 hover:scale-105'
+          }`}
+        aria-label="Copy email address"
+      >
+        {copied ? (
+          <>
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+            </svg>
+            Copied ✓
+          </>
+        ) : (
+          <>
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            Copy Email
+          </>
+        )}
+      </button>
+    </div>
+  )
+}
+
 export default function Contact() {
   const ref = useReveal()
 
@@ -29,25 +81,27 @@ export default function Contact() {
     <section id="contact" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="orb w-72 h-72 sm:w-[400px] sm:h-[400px] bg-teal-500/5 left-1/2 -translate-x-1/2 top-0 pointer-events-none" />
 
-      <div className="max-w-xl mx-auto text-center">
+      <div className="max-w-xl mx-auto text-center" data-aos="fade-up">
         <SectionTitle
           label="Contact"
           title={<>Let's <span className="gradient-text">Connect</span></>}
           subtitle="Let us build the next useful thing."
         />
 
-        {/* Professional paragraph */}
         <p className="reveal reveal-delay-2 text-slate-400 text-sm sm:text-base leading-relaxed max-w-md mx-auto text-center -mt-6 mb-10">
           For internships, collaborations, and developer opportunities, feel free to connect directly through email or professional platforms.
         </p>
 
-        {/* Social icons — centered row */}
+        {/* Email row with copy button */}
+        <CopyEmailRow />
+
+        {/* Social icons */}
         <div className="reveal reveal-delay-3 flex justify-center gap-6 sm:gap-8">
           {socials.map(s => (
             <a
               key={s.label}
               href={s.href}
-              target={s.label === 'Email' ? undefined : '_blank'}
+              target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
               title={s.label}
