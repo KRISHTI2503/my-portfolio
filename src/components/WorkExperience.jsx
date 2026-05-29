@@ -16,7 +16,7 @@ export default function WorkExperience() {
           title={<>Work <span className="gradient-text">Experience</span></>}
         />
 
-        <div className="reveal reveal-delay-2 flex justify-center" data-aos="fade-up">
+        <div className="reveal reveal-delay-2 flex justify-center">
           <div className="glass-card border border-teal-500/25 bg-gradient-to-br from-teal-500/[0.06] to-cyan-500/[0.03] p-8 sm:p-12 text-center max-w-2xl w-full relative overflow-hidden">
 
             {/* Background accent glow */}

@@ -81,7 +81,7 @@ export default function Contact() {
     <section id="contact" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="orb w-72 h-72 sm:w-[400px] sm:h-[400px] bg-teal-500/5 left-1/2 -translate-x-1/2 top-0 pointer-events-none" />
 
-      <div className="max-w-xl mx-auto text-center" data-aos="fade-up">
+      <div className="max-w-xl mx-auto text-center">
         <SectionTitle
           label="Contact"
           title={<>Let's <span className="gradient-text">Connect</span></>}

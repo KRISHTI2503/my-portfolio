@@ -14,7 +14,7 @@ export default function About() {
     <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="orb w-64 h-64 sm:w-[400px] sm:h-[400px] bg-teal-500/5 -right-32 sm:-right-48 top-0 pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center" data-aos="fade-up">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
 
         {/* Profile photo with hover glow */}
         <div className="reveal flex justify-center md:justify-start">

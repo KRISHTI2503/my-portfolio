@@ -85,7 +85,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="section-padding relative overflow-hidden" ref={ref}>
-      <div className="max-w-7xl mx-auto" data-aos="fade-up">
+      <div className="max-w-7xl mx-auto">
         <SectionTitle
           label="Tech Stack"
           title={<>Skills & <span className="gradient-text">Technologies</span></>}
@@ -102,7 +102,7 @@ export default function Skills() {
                 hover:border-teal-500/30 hover:-translate-y-1
                 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]
                 transition-all duration-300 ease-out`}
-              data-aos="fade-up"
+             
               data-aos-delay={gi * 80}
             >
               {/* Icon + title row */}

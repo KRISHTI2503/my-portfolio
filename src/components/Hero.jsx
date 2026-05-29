@@ -231,7 +231,7 @@ export default function Hero() {
         </div>
 
         {/* Stat counter pills */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4" data-aos="fade-up" data-aos-delay="200">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
           <StatCounter target={4} label="Projects" />
           <StatCounter target={3} label="Hackathons" />
           <StatCounter target={8.57} label="CPI" />

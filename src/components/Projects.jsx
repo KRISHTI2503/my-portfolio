@@ -59,7 +59,7 @@ function ProjectCard({ project, index }) {
     <div
       className={`reveal reveal-delay-${(index % 6) + 1} group relative glass-card bg-gradient-to-br ${project.color} flex flex-col h-full overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:shadow-[0_12px_32px_rgba(0,0,0,0.25),0_0_0_1px_rgba(13,148,136,0.35)]`}
       style={{ '--accent': project.accent }}
-      data-aos="fade-up"
+     
       data-aos-delay={index * 80}
     >
       {/* Hover glow */}

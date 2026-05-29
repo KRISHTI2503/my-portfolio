@@ -1,3 +1,7 @@
+import { useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -9,10 +13,13 @@ import Education from './components/Education'
 import WorkExperience from './components/WorkExperience'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-
 import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
+  useEffect(() => {
+    AOS.init({ duration: 600, once: true, offset: 60 })
+  }, [])
+
   return (
     <div className="min-h-screen">
       <Navbar />
