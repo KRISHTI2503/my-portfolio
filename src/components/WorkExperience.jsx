@@ -43,10 +43,7 @@ export default function WorkExperience() {
               Open to Opportunities
             </h3>
 
-            {/* Availability text */}
-            <p className="relative text-teal-300/80 text-sm sm:text-base font-medium mb-4">
-              Available for SDE internships — Summer/Fall 2026
-            </p>
+
 
             <p className="relative text-slate-400 text-sm sm:text-base leading-relaxed max-w-sm mx-auto mb-7">
               Actively looking for internships and collaborative opportunities where I can contribute, learn, and grow as a developer.

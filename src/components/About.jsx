@@ -1,11 +1,5 @@
 import useReveal from '../hooks/useReveal'
 
-const badges = [
-  { emoji: '🎓', text: 'DDU \'28' },
-  { emoji: '📍', text: 'Nadiad' },
-  { emoji: '🏆', text: '3x Hackathon' },
-  { emoji: '💡', text: 'DSA Learner' },
-]
 
 export default function About() {
   const ref = useReveal()
@@ -59,23 +53,9 @@ export default function About() {
             Passionate B.Tech Information Technology student focused on web development, problem solving, and building practical digital solutions. I enjoy creating modern user-friendly applications and continuously improving my skills in Data Structures &amp; Algorithms, frontend development, and backend technologies.
           </p>
 
-          <p className="reveal reveal-delay-3 text-slate-400 leading-relaxed text-sm sm:text-base mb-7">
+          <p className="reveal reveal-delay-3 text-slate-400 leading-relaxed text-sm sm:text-base">
             I actively participate in hackathons and collaborative projects, where I work with teams to build innovative solutions and gain real-world development experience.
           </p>
-
-          {/* Badge chips */}
-          <div className="reveal reveal-delay-3 flex flex-wrap gap-2">
-            {badges.map(badge => (
-              <span
-                key={badge.text}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-teal-500/40 bg-teal-500/10 text-teal-300 hover:border-teal-400/70 hover:bg-teal-500/20 transition-all duration-200 cursor-default"
-                style={{ fontSize: '13px' }}
-              >
-                <span>{badge.emoji}</span>
-                <span className="font-medium">{badge.text}</span>
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

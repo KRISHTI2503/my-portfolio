@@ -66,12 +66,7 @@ function ProjectCard({ project, index }) {
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ background: `radial-gradient(circle at 50% 0%, ${project.accent}15, transparent 70%)` }} />
 
-      {/* Featured badge */}
-      {project.featured && (
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-semibold">
-          ⭐ Featured
-        </div>
-      )}
+
 
       {/* Gradient header block */}
       <div

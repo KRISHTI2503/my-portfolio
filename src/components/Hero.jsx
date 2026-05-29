@@ -230,12 +230,7 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Stat counter pills */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-          <StatCounter target={4} label="Projects" />
-          <StatCounter target={3} label="Hackathons" />
-          <StatCounter target={8.57} label="CPI" />
-        </div>
+
       </div>
 
       {resumeOpen && <ResumeModal onClose={() => setResumeOpen(false)} />}
