@@ -86,6 +86,19 @@ const codingProfiles = [
     path: 'M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.5 17.311h-1.975v-3.97H9.475v3.97H7.5V6.689h1.975v4.906h5.05V6.689H16.5v10.622z',
     isStroke: false,
   },
+  {
+    label: 'GeeksForGeeks',
+    href: 'https://www.geeksforgeeks.org/profile/krishti2511',
+    color: 'from-lime-500/15 to-green-500/5',
+    border: 'border-lime-500/25',
+    textColor: 'text-lime-300',
+    stat: 'krishti2511',
+    // GFG-style "G" path — geometric monogram matching the GFG brand shape
+    path: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-2h-2v-1h2v-2H9v-1h2V8.5h2v1.5h2v1h-2v2h2v1h-2v1.5h-2z',
+    isStroke: false,
+    // Use text badge fallback rendered inline
+    useTextBadge: true,
+  },
 ]
 
 function SubHeading({ label, children }) {
@@ -181,9 +194,13 @@ export default function Achievements() {
                 className={`reveal reveal-delay-${i + 1} group glass-card bg-gradient-to-br ${profile.color} border ${profile.border} p-5 sm:p-6 flex items-center gap-4 hover:scale-[1.03] transition-all duration-300`}
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-teal-400/40 transition-colors">
-                  <svg className={`w-6 h-6 sm:w-7 sm:h-7 ${profile.textColor}`} fill={profile.isStroke ? 'none' : 'currentColor'} stroke={profile.isStroke ? 'currentColor' : 'none'} viewBox="0 0 24 24">
-                    <path d={profile.path} />
-                  </svg>
+                  {profile.useTextBadge ? (
+                    <span className={`text-sm font-black tracking-tight ${profile.textColor}`}>GFG</span>
+                  ) : (
+                    <svg className={`w-6 h-6 sm:w-7 sm:h-7 ${profile.textColor}`} fill={profile.isStroke ? 'none' : 'currentColor'} stroke={profile.isStroke ? 'currentColor' : 'none'} viewBox="0 0 24 24">
+                      <path d={profile.path} />
+                    </svg>
+                  )}
                 </div>
                 <div className="min-w-0">
                   <h3 className={`font-bold text-base sm:text-lg ${profile.textColor} group-hover:underline`}>
