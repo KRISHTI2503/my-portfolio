@@ -44,7 +44,7 @@ const hackathons = [
     // network icon path
     iconPath: 'M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18',
     badge1: { label: 'View Badge', href: '/certificates/ccna.png' },
-    badge2: { label: 'View Certificate', href: '/certificates/ccna.pdf' },
+    badge2: { label: 'View Certificate', href: '/certificates/ccna-cert.jpeg' },
   },
   {
     title: 'AWS Academy Cloud Foundations',
@@ -58,7 +58,7 @@ const hackathons = [
     // cloud icon path
     iconPath: 'M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z',
     badge1: { label: 'View Badge', href: '/certificates/aws.png' },
-    badge2: { label: 'View Certificate', href: '/certificates/aws.pdf' },
+    badge2: { label: 'View Certificate', href: '/certificates/aws-cert.jpeg' },
   },
 ]
 

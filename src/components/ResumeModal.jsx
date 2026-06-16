@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-const RESUME_VERSION = 'v5'
-const RESUME_URL = `/assets/KrishtiPatel_ Resume.pdf?${RESUME_VERSION}`
+const RESUME_VERSION = 'v6'
+const RESUME_URL = `/assets/KrishtiPatel_Resume.pdf?${RESUME_VERSION}`
 
 export default function ResumeModal({ onClose }) {
   const [visible, setVisible] = useState(false)
@@ -70,11 +70,11 @@ export default function ResumeModal({ onClose }) {
             {/* Download Resume */}
             <a
               href={RESUME_URL}
-              download="KrishtiPatel_ Resume.pdf"
+              download="KrishtiPatel_Resume.pdf"
               className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-teal-400 border border-teal-500/40 rounded-lg hover:bg-teal-500/10 hover:border-teal-400 transition-all duration-200 whitespace-nowrap"
             >
               <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2v6a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               <span className="hidden xs:inline">Download Resume</span>
               <span className="xs:hidden">Save</span>
@@ -88,7 +88,7 @@ export default function ResumeModal({ onClose }) {
               className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-400 border border-white/10 rounded-lg hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
             >
               <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v6.25" />
               </svg>
               <span className="hidden xs:inline">Open Full Screen</span>
               <span className="xs:hidden">Open</span>
@@ -125,11 +125,11 @@ export default function ResumeModal({ onClose }) {
               </div>
               <a
                 href={RESUME_URL}
-                download="KrishtiPatel_ Resume.pdf"
+                download="KrishtiPatel_Resume.pdf"
                 className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm font-semibold rounded-xl hover:shadow-[0_0_20px_rgba(13,148,136,0.4)] transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2v6a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 Download Resume
               </a>
