@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-const RESUME_VERSION = 'v4'
-const RESUME_URL = `/assets/resume.pdf?${RESUME_VERSION}`
+const RESUME_VERSION = 'v5'
+const RESUME_URL = `/assets/KrishtiPatel_ Resume.pdf?${RESUME_VERSION}`
 
 export default function ResumeModal({ onClose }) {
   const [visible, setVisible] = useState(false)
