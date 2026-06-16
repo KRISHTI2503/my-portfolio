@@ -70,7 +70,7 @@ export default function ResumeModal({ onClose }) {
             {/* Download Resume */}
             <a
               href={RESUME_URL}
-              download
+              download="KrishtiPatel_ Resume.pdf"
               className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-teal-400 border border-teal-500/40 rounded-lg hover:bg-teal-500/10 hover:border-teal-400 transition-all duration-200 whitespace-nowrap"
             >
               <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -125,7 +125,7 @@ export default function ResumeModal({ onClose }) {
               </div>
               <a
                 href={RESUME_URL}
-                download
+                download="KrishtiPatel_ Resume.pdf"
                 className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm font-semibold rounded-xl hover:shadow-[0_0_20px_rgba(13,148,136,0.4)] transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
