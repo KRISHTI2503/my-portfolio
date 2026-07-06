@@ -3,6 +3,18 @@ import SectionTitle from './SectionTitle'
 
 const projects = [
   {
+    title: 'FinishLine AI',
+    description: 'AI-powered productivity companion that breaks down goals into actionable plans, delivers autonomous daily briefings, and intervenes with a real recovery plan when deadlines are at risk. Built solo for Vibe2Ship — India\'s Biggest Vibe-Coding Hackathon (Coding Ninjas × Google for Developers).',
+    tags: ['React', 'TypeScript', 'Firebase', 'Gemini API'],
+    // Lightning bolt icon
+    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+    color: 'from-orange-500/20 to-red-500/5',
+    headerGradient: 'from-orange-600/40 to-red-900/30',
+    accent: '#f97316',
+    github: 'https://github.com/KRISHTI2503/FinishLine-AI',
+    live: 'https://finishline-ai-820143287124.us-west1.run.app/',
+  },
+  {
     title: 'FundLedger',
     description: 'Community funding platform enabling transparent proposal submission, verification, and democratic voting across funding rounds to support fair, community-driven funding decisions. Built during the DU Hacks 5.0 hackathon.',
     tags: ['Django', 'HTML', 'Tailwind CSS', 'JavaScript'],
