@@ -33,6 +33,16 @@ const hackathons = [
     cert: '/certificates/tic-tech-toe-4.0.jpeg',
   },
   {
+    title: 'Vibe2Ship — Coding Ninjas × Google for Developers',
+    description: 'Built FinishLine AI — a proactive, multilingual AI productivity companion that plans deadlines, re-evaluates progress daily, and delivers real recovery plans before you miss what matters. Features autonomous daily briefing, crisis coaching, multilingual voice input (English, Hindi, Gujarati), and smart rescheduling powered by Gemini API.',
+    date: '2026',
+    type: 'Hackathon',
+    color: 'from-purple-500/15 to-violet-500/5',
+    border: 'border-purple-500/25',
+    badge: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
+    cert: '/certificates/vibe2ship.jpeg',
+  },
+  {
     title: 'CCNA: Introduction to Networks',
     description: 'Completed Cisco Networking Academy course covering network configuration, IPv4/IPv6 addressing, OSI model layers, switching, and security best practices.',
     date: '2026',
