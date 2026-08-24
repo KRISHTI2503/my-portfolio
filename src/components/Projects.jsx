@@ -61,7 +61,7 @@ const projects = [
     color: 'from-purple-500/20 to-blue-500/5',
     headerGradient: 'from-purple-600/40 to-blue-900/30',
     accent: '#8b5cf6',
-    github: 'https://github.com/Hetbhalodiya91/Innoveters',
+    github: null,
     live: 'https://panth1101.github.io/Innovators-/',
     featured: false,
   },
