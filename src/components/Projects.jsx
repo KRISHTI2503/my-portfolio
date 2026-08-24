@@ -4,7 +4,7 @@ import SectionTitle from './SectionTitle'
 const projects = [
   {
     title: 'BugSense',
-    description: 'AI-Assisted Project & Issue Management Platform built with a team of 2. Fixes real accountability gaps in issue tracking — being assigned a ticket and actually accepting it are two separate steps, keeping workload and velocity numbers honest. AI suggests assignees and estimates story points but never acts without human sign-off. Each project independently runs Scrum or Kanban.',
+    description: 'AI-Assisted Project & Issue Management Platform built for TIC-TECH-TOE \'26 — DA-IICT Hackathon. Fixes real accountability gaps in issue tracking — being assigned a ticket and actually accepting it are two separate steps, keeping workload and velocity numbers honest. AI suggests assignees and estimates story points but never acts without human sign-off. Each project independently runs Scrum or Kanban.',
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Python', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Slack API', 'GitHub', 'Sentry'],
     // Bug/shield icon
     icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
@@ -13,7 +13,7 @@ const projects = [
     accent: '#8b5cf6',
     github: null,
     live: null,
-    status: 'Software Engineering Lab Project — 2025–2026',
+    status: 'Hackathon Project — Under Development',
     featured: true,
   },
   {
