@@ -30,7 +30,7 @@ const hackathons = [
     color: 'from-teal-500/15 to-emerald-500/5',
     border: 'border-teal-500/25',
     badge: 'bg-teal-500/10 text-teal-300 border-teal-500/20',
-    cert: '/certificates/tic-tech-toe-4.0.jpeg',
+    cert: '/certificates/tic_tech_Toe_certi_2026.pdf',
   },
   {
     title: 'Vibe2Ship — Coding Ninjas × Google for Developers',
@@ -41,6 +41,17 @@ const hackathons = [
     border: 'border-purple-500/25',
     badge: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
     cert: '/certificates/vibe2ship.jpeg',
+  },
+  {
+    title: "BugSense — Tic Tech Toe '26",
+    description: 'AI-Integrated workflow automation engine resolving context fragmentation across developer messaging, issue tracking, and code repositories. Built customizable workflow engines triggering automated GitHub branch creation on task acceptance, integrated LangGraph orchestration for repository-aware debugging, and multi-channel urgency routing via Slack, SMS, and Email.',
+    date: '2026',
+    type: 'Hackathon',
+    color: 'from-purple-500/15 to-violet-500/5',
+    border: 'border-purple-500/25',
+    badge: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
+    cert: '/certificates/tic_tech_Toe_certi_2026.pdf',
+    tag: 'Finalist',
   },
   {
     title: 'CCNA: Introduction to Networks',
