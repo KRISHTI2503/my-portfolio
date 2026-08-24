@@ -43,10 +43,11 @@ const hackathons = [
     cert: '/certificates/vibe2ship.jpeg',
   },
   {
-    title: "BugSense — Tic Tech Toe '26",
+    title: "TIC-TECH-TOE '26 — DA-IICT",
     description: 'AI-Integrated workflow automation engine resolving context fragmentation across developer messaging, issue tracking, and code repositories. Built customizable workflow engines triggering automated GitHub branch creation on task acceptance, integrated LangGraph orchestration for repository-aware debugging, and multi-channel urgency routing via Slack, SMS, and Email.',
     date: '2026',
     type: 'Hackathon',
+    org: 'BugSense',
     color: 'from-purple-500/15 to-violet-500/5',
     border: 'border-purple-500/25',
     badge: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
