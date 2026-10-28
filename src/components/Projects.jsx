@@ -1,4 +1,4 @@
-import { ExternalLink, Star } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
 
 // GitHub Icon SVG
@@ -16,7 +16,6 @@ const projects = [
     github: null,
     live: null,
     status: 'Hackathon Project — Under Development',
-    featured: true,
   },
   {
     title: 'FinishLine AI',
@@ -24,7 +23,6 @@ const projects = [
     tags: ['React', 'TypeScript', 'Firebase', 'Gemini API'],
     github: 'https://github.com/KRISHTI2503/FinishLine-AI',
     live: 'https://finishline-ai-820143287124.us-west1.run.app/',
-    featured: true,
   },
   {
     title: 'FundLedger',
@@ -32,7 +30,6 @@ const projects = [
     tags: ['Django', 'HTML', 'Tailwind CSS', 'JavaScript'],
     github: 'https://github.com/PANTH1101/fundledger-django',
     live: 'https://fundledger-django.onrender.com/',
-    featured: true,
   },
   {
     title: 'PaperWise',
@@ -64,17 +61,7 @@ function ProjectCard({ project, index }) {
     <div
       className={`card card-hover group reveal reveal-delay-${(index % 3) + 1} overflow-hidden flex flex-col h-full`}
     >
-      {/* Featured Badge */}
-      {project.featured && (
-        <div className="px-6 pt-6 pb-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-semibold">
-            <Star className="w-3 h-3 fill-current" />
-            Featured
-          </div>
-        </div>
-      )}
-
-      <div className={`p-6 ${project.featured ? 'pt-2' : ''} space-y-4 flex flex-col flex-1`}>
+      <div className="p-6 space-y-4 flex flex-col flex-1">
         {/* Title */}
         <h3 className="text-xl font-bold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
           {project.title}
