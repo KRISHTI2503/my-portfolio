@@ -31,7 +31,6 @@ const projects = [
     tags: ['HTML', 'CSS', 'JavaScript', 'OpenAI API'],
     github: null,
     live: null,
-    status: 'Hackathon prototype',
     hackathon: true,
   },
   {
