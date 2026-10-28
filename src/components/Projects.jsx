@@ -15,7 +15,7 @@ const projects = [
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Python', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Slack API', 'GitHub', 'Sentry'],
     github: null,
     live: null,
-    status: 'Hackathon Project — Under Development',
+    hackathon: true,
   },
   {
     title: 'FinishLine AI',
@@ -23,13 +23,15 @@ const projects = [
     tags: ['React', 'TypeScript', 'Firebase', 'Gemini API'],
     github: 'https://github.com/KRISHTI2503/FinishLine-AI',
     live: 'https://finishline-ai-820143287124.us-west1.run.app/',
+    hackathon: true,
   },
   {
     title: 'FundLedger',
-    description: 'Community funding platform enabling transparent proposal submission, verification, and democratic voting across funding rounds to support fair, community-driven funding decisions. Built during the DU Hacks 5.0 hackathon.',
-    tags: ['Django', 'HTML', 'Tailwind CSS', 'JavaScript'],
+    description: 'Django-based community funding platform for transparent, democratic funding decisions. Pitchers submit proposals that admins verify, donors cast sealed votes in time-bound funding rounds, and winners are funded from category fund pools, with every transaction recorded in an auditable ledger. Includes role-based access (Pitcher, Donor, Admin), donor wallets, and public transparency dashboards. Built during the DU Hacks 5.0 hackathon.',
+    tags: ['Django', 'Python', 'HTML', 'Tailwind CSS', 'JavaScript'],
     github: 'https://github.com/PANTH1101/fundledger-django',
     live: 'https://fundledger-django.onrender.com/',
+    hackathon: true,
   },
   {
     title: 'PaperWise',
@@ -45,6 +47,7 @@ const projects = [
     tags: ['HTML', 'CSS', 'JavaScript'],
     github: null,
     live: 'https://panth1101.github.io/Innovators-/',
+    hackathon: true,
   },
   {
     title: 'Expense Tracker',
@@ -62,6 +65,15 @@ function ProjectCard({ project, index }) {
       className={`card card-hover group reveal reveal-delay-${(index % 3) + 1} overflow-hidden flex flex-col h-full`}
     >
       <div className="p-6 space-y-4 flex flex-col flex-1">
+        {/* Hackathon Badge */}
+        {project.hackathon && (
+          <div className="flex items-center gap-2">
+            <span className="tag tag-primary text-xs font-mono">
+              Hackathon
+            </span>
+          </div>
+        )}
+
         {/* Title */}
         <h3 className="text-xl font-bold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
           {project.title}
@@ -107,7 +119,7 @@ function ProjectCard({ project, index }) {
             </a>
           )}
           
-          {project.status && !project.github && !project.live && (
+          {project.status && (
             <p className="text-sm text-light-muted dark:text-dark-muted italic font-mono">
               {project.status}
             </p>
