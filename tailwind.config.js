@@ -13,13 +13,18 @@ export default {
     },
     extend: {
       colors: {
-        // Professional indigo/violet accent
-        accent: {
-          DEFAULT: '#6366F1',
-          hover: '#4F46E5',
-          light: '#818CF8',
+        // Blue accent for both themes
+        primary: {
+          DEFAULT: '#2563EB', // blue-600 for light mode
+          hover: '#1D4ED8',   // blue-700 for light mode
+          light: '#60A5FA',   // blue-400
         },
-        // Dark mode colors
+        // Dark mode (uses lighter blue)
+        'primary-dark': {
+          DEFAULT: '#3B82F6', // blue-500 for dark mode
+          hover: '#60A5FA',   // blue-400 for dark mode
+        },
+        // Dark mode
         dark: {
           bg: '#0B0F19',
           surface: '#111827',
@@ -27,10 +32,9 @@ export default {
           text: '#E5E7EB',
           muted: '#9CA3AF',
         },
-        // Light mode colors
+        // Light mode
         light: {
-          bg: '#FFFFFF',
-          'bg-alt': '#F9FAFB',
+          bg: '#F9FAFB',
           surface: '#FFFFFF',
           border: '#E5E7EB',
           text: '#111827',
@@ -44,10 +48,13 @@ export default {
       maxWidth: {
         content: '1100px',
       },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+      },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out forwards',
-        'float': 'float 8s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -58,10 +65,10 @@ export default {
           from: { opacity: '0', transform: 'translateY(30px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
+      },
+      transitionDuration: {
+        '150': '150ms',
+        '250': '250ms',
       },
     },
   },

@@ -19,7 +19,7 @@ export default class ErrorBoundary extends Component {
       return (
         <div className="min-h-screen flex items-center justify-center bg-[#030712] px-6 text-center">
           <div>
-            <p className="text-teal-400 font-mono text-sm mb-3">// error</p>
+            <p className="text-blue-400 font-mono text-sm mb-3">// error</p>
             <h1 className="text-white text-2xl font-bold mb-4">Something went wrong.</h1>
             <p className="text-slate-400 mb-6">Please refresh the page to continue.</p>
             <button

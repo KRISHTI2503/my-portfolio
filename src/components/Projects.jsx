@@ -11,8 +11,8 @@ const GitHubIcon = ({ className }) => (
 const projects = [
   {
     title: 'BugSense',
-    description: 'AI-Assisted Project & Issue Management Platform built for TIC-TECH-TOE \'26 — DA-IICT Hackathon. Fixes real accountability gaps in issue tracking — being assigned a ticket and actually accepting it are two separate steps, keeping workload and velocity numbers honest. AI suggests assignees and estimates story points but never acts without human sign-off.',
-    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Python', 'LangGraph', 'PostgreSQL'],
+    description: 'AI-Assisted Project & Issue Management Platform built for TIC-TECH-TOE \'26 — DA-IICT Hackathon. Fixes real accountability gaps in issue tracking — being assigned a ticket and actually accepting it are two separate steps, keeping workload and velocity numbers honest. AI suggests assignees and estimates story points but never acts without human sign-off. Each project independently runs Scrum or Kanban.',
+    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Python', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Slack API', 'GitHub', 'Sentry'],
     github: null,
     live: null,
     status: 'Hackathon Project — Under Development',
@@ -20,7 +20,7 @@ const projects = [
   },
   {
     title: 'FinishLine AI',
-    description: 'AI-powered productivity companion that breaks down goals into actionable plans, delivers autonomous daily briefings, and intervenes with a real recovery plan when deadlines are at risk. Built solo for Vibe2Ship — India\'s Biggest Vibe-Coding Hackathon.',
+    description: 'AI-powered productivity companion that breaks down goals into actionable plans, delivers autonomous daily briefings, and intervenes with a real recovery plan when deadlines are at risk. Built solo for Vibe2Ship — India\'s Biggest Vibe-Coding Hackathon (Coding Ninjas × Google for Developers).',
     tags: ['React', 'TypeScript', 'Firebase', 'Gemini API'],
     github: 'https://github.com/KRISHTI2503/FinishLine-AI',
     live: 'https://finishline-ai-820143287124.us-west1.run.app/',
@@ -50,64 +50,58 @@ const projects = [
     live: 'https://panth1101.github.io/Innovators-/',
   },
   {
-    title: 'Joke Generator',
-    description: 'Fun side project: A simple, delightful random joke generator built with vanilla JavaScript. Clean UI with smooth animations.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'API'],
+    title: 'Expense Tracker',
+    description: 'Java application to record and categorize daily expenses. Applied Object-Oriented Programming principles for modular and maintainable design.',
+    tags: ['Java', 'OOP'],
     github: null,
-    live: '/joke-generator.html',
-    isInternal: true,
+    live: null,
+    status: 'Project under development',
   },
 ]
 
 function ProjectCard({ project, index }) {
   return (
     <div
-      className={`card card-hover group reveal reveal-delay-${(index % 3) + 1} overflow-hidden ${
-        project.featured ? 'md:col-span-2 lg:col-span-1' : ''
-      }`}
+      className={`card card-hover group reveal reveal-delay-${(index % 3) + 1} overflow-hidden flex flex-col h-full`}
     >
-      {/* Project Header with gradient accent */}
-      <div className="h-2 bg-gradient-to-r from-indigo-600 to-violet-600" />
-
-      <div className="p-6 space-y-4">
-        {/* Featured Badge */}
-        {project.featured && (
+      {/* Featured Badge */}
+      {project.featured && (
+        <div className="px-6 pt-6 pb-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-semibold">
             <Star className="w-3 h-3 fill-current" />
             Featured
           </div>
-        )}
+        </div>
+      )}
 
+      <div className={`p-6 ${project.featured ? 'pt-2' : ''} space-y-4 flex flex-col flex-1`}>
         {/* Title */}
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+        <h3 className="text-xl font-bold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-4">
+        <p className="text-light-muted dark:text-dark-muted leading-relaxed flex-1">
           {project.description}
         </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-xs font-medium"
-            >
+            <span key={tag} className="tag tag-primary text-xs">
               {tag}
             </span>
           ))}
         </div>
 
         {/* Links or Status */}
-        <div className="flex items-center gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex items-center gap-3 pt-4 border-t border-light-border dark:border-dark-border">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="flex items-center gap-2 text-sm text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text transition-colors"
             >
               <GitHubIcon className="w-4 h-4" />
               Source
@@ -117,17 +111,17 @@ function ProjectCard({ project, index }) {
           {project.live && (
             <a
               href={project.live}
-              target={project.isInternal ? '_self' : '_blank'}
-              rel={project.isInternal ? undefined : 'noopener noreferrer'}
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors ml-auto"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-colors ml-auto"
             >
               <ExternalLink className="w-4 h-4" />
-              {project.isInternal ? 'View' : 'Live Demo'}
+              Live Demo
             </a>
           )}
           
           {project.status && !project.github && !project.live && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+            <p className="text-sm text-light-muted dark:text-dark-muted italic font-mono">
               {project.status}
             </p>
           )}
@@ -141,24 +135,22 @@ export default function Projects() {
   const ref = useReveal()
 
   return (
-    <section id="projects" className="section-padding bg-gray-50 dark:bg-dark-bg-alt" ref={ref}>
+    <section id="projects" className="section-padding bg-light-bg dark:bg-dark-bg" ref={ref}>
       <div className="container-custom">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-semibold mb-4">
-              My Work
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <span className="section-eyebrow">My Work</span>
+            <h2 className="section-title">
               Featured <span className="gradient-text">Projects</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="section-subtitle">
               A selection of projects I've built, from hackathons to personal experiments.
             </p>
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
             ))}

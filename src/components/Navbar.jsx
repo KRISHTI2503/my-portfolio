@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Sun, Moon, FileText } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Achievements', href: '#achievements' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -66,7 +67,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 dark:bg-dark-surface/80 backdrop-blur-xl border-b border-light-border dark:border-dark-border shadow-sm'
+          ? 'bg-light-surface/80 dark:bg-dark-surface/80 backdrop-blur-xl border-b border-light-border dark:border-dark-border shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -78,10 +79,10 @@ export default function Navbar() {
             onClick={(e) => handleNavClick(e, '#hero')}
             className="flex items-center gap-2 group"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white font-bold text-sm shadow-md group-hover:shadow-lg transition-shadow">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center text-white font-bold text-sm shadow-md group-hover:shadow-lg transition-shadow">
               KP
             </div>
-            <span className="text-lg font-bold text-gray-900 dark:text-white hidden sm:block">
+            <span className="text-lg font-bold text-light-text dark:text-dark-text">
               Krishti
             </span>
           </a>
@@ -95,13 +96,13 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-medium transition-colors relative ${
                   activeSection === link.href.slice(1)
-                    ? 'text-indigo-600 dark:text-indigo-400'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    ? 'text-primary'
+                    : 'text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text'
                 }`}
               >
                 {link.label}
                 {activeSection === link.href.slice(1) && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 rounded-full" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
                 )}
               </a>
             ))}
@@ -109,22 +110,11 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            {/* Resume Button - Desktop */}
-            <a
-              href="/assets/KrishtiPatel_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 border border-indigo-600/30 dark:border-indigo-400/30 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors"
-            >
-              <FileText className="w-4 h-4" />
-              Resume
-            </a>
-
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-lg text-light-muted dark:text-dark-muted hover:bg-light-bg dark:hover:bg-dark-bg transition-colors"
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -133,7 +123,7 @@ export default function Navbar() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
-              className="lg:hidden p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-light-muted dark:text-dark-muted hover:bg-light-bg dark:hover:bg-dark-bg transition-colors"
             >
               {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -141,9 +131,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       {menuOpen && (
-        <div className="lg:hidden border-t border-light-border dark:border-dark-border bg-white dark:bg-dark-surface">
+        <div className="lg:hidden border-t border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface">
           <div className="container-custom py-4">
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -153,22 +143,13 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                     activeSection === link.href.slice(1)
-                      ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400'
-                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-light-text dark:text-dark-text hover:bg-light-bg dark:hover:bg-dark-bg'
                   }`}
                 >
                   {link.label}
                 </a>
               ))}
-              <a
-                href="/assets/KrishtiPatel_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-3 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 flex items-center gap-2 justify-center md:hidden"
-              >
-                <FileText className="w-4 h-4" />
-                View Resume
-              </a>
             </div>
           </div>
         </div>
