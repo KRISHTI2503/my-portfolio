@@ -1,61 +1,95 @@
+import { MapPin, GraduationCap, Code } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
-
 
 export default function About() {
   const ref = useReveal()
 
+  const quickFacts = [
+    {
+      icon: MapPin,
+      label: 'Location',
+      value: 'Nadiad, Gujarat',
+    },
+    {
+      icon: GraduationCap,
+      label: 'Education',
+      value: 'B.Tech IT, DDU',
+    },
+    {
+      icon: Code,
+      label: 'Focus',
+      value: 'Full Stack Development',
+    },
+  ]
+
   return (
-    <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
-      <div className="orb w-64 h-64 sm:w-[400px] sm:h-[400px] bg-teal-500/5 -right-32 sm:-right-48 top-0 pointer-events-none" />
+    <section id="about" className="section-padding bg-gray-50 dark:bg-dark-bg-alt" ref={ref}>
+      <div className="container-custom">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-semibold mb-4">
+              About Me
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Passionate about building <br className="hidden sm:block" />
+              <span className="gradient-text">for the world</span>
+            </h2>
+          </div>
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
+          {/* Two Column Layout */}
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Profile Image */}
+            <div className="flex justify-center md:justify-end reveal">
+              <div className="relative group">
+                {/* Gradient border effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+                
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
+                  <img
+                    src="/assets/profile.jpg"
+                    alt="Krishti Patel"
+                    className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
 
-        {/* Profile photo with hover glow */}
-        <div className="reveal flex justify-center md:justify-start">
-          <div
-            className="p-[2px] rounded-full flex-shrink-0 group cursor-default
-              transition-all duration-500
-              hover:shadow-[0_0_40px_rgba(13,148,136,0.5),0_0_80px_rgba(13,148,136,0.2)]"
-            style={{ background: 'conic-gradient(from 180deg, #0d9488, #06b6d4, #10b981, #0d9488)' }}
-          >
-            <div className="w-[220px] h-[220px] md:w-[250px] md:h-[250px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden bg-[#030712] transition-all duration-500 group-hover:scale-[1.02]">
-              <img
-                src="/assets/profile.jpg"
-                alt="Krishti Patel"
-                className="w-full h-full object-cover object-center"
-                onError={e => {
-                  e.currentTarget.style.display = 'none'
-                  e.currentTarget.nextSibling.style.display = 'flex'
-                }}
-              />
-              <div
-                className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 items-center justify-center hidden text-slate-500 text-sm font-mono"
-                aria-hidden="true"
-              >
-                photo.jpg
+            {/* Right: Content */}
+            <div className="space-y-6">
+              <div className="reveal reveal-delay-1">
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Passionate B.Tech Information Technology student focused on web development, problem solving, and building practical digital solutions. I enjoy creating modern user-friendly applications and continuously improving my skills in Data Structures & Algorithms, frontend development, and backend technologies.
+                </p>
+              </div>
+
+              <div className="reveal reveal-delay-2">
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  I actively participate in hackathons and collaborative projects, where I work with teams to build innovative solutions and gain real-world development experience.
+                </p>
+              </div>
+
+              {/* Quick Facts */}
+              <div className="pt-6 space-y-4 reveal reveal-delay-3">
+                {quickFacts.map((fact) => (
+                  <div key={fact.label} className="flex items-center gap-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                      <fact.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                        {fact.label}
+                      </p>
+                      <p className="text-base text-gray-900 dark:text-white font-semibold">
+                        {fact.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Content */}
-        <div>
-          <div className="reveal">
-            <span className="section-label">About Me</span>
-          </div>
-
-          <h2 className="reveal reveal-delay-1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
-            Passionate about<br />
-            <span className="gradient-text">building for the world</span>
-          </h2>
-
-          <p className="reveal reveal-delay-2 text-slate-400 leading-relaxed mb-5 text-base sm:text-lg">
-            Passionate B.Tech Information Technology student focused on web development, problem solving, and building practical digital solutions. I enjoy creating modern user-friendly applications and continuously improving my skills in Data Structures &amp; Algorithms, frontend development, and backend technologies.
-          </p>
-
-          <p className="reveal reveal-delay-3 text-slate-400 leading-relaxed text-sm sm:text-base">
-            I actively participate in hackathons and collaborative projects, where I work with teams to build innovative solutions and gain real-world development experience.
-          </p>
         </div>
       </div>
     </section>
