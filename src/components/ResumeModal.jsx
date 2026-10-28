@@ -1,21 +1,45 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { FileText, Download, ExternalLink, X } from 'lucide-react'
 
-const RESUME_VERSION = 'v6'
-const RESUME_URL = `/assets/KrishtiPatel_Resume.pdf?${RESUME_VERSION}`
+const RESUME_URL = '/resume.pdf'
 
 export default function ResumeModal({ onClose }) {
   const [visible, setVisible] = useState(false)
   const [iframeError, setIframeError] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const triggerRef = useRef(document.activeElement)
+  const closeButtonRef = useRef(null)
+
+  // Detect mobile (many mobile browsers can't render PDFs inline)
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+    }
+    checkMobile()
+  }, [])
 
   // Trigger show animation on mount
   useEffect(() => {
     const t = requestAnimationFrame(() => setVisible(true))
-    return () => cancelAnimationFrame(t)
+    
+    // Focus trap: focus the close button after animation
+    const focusTimeout = setTimeout(() => {
+      if (closeButtonRef.current) {
+        closeButtonRef.current.focus()
+      }
+    }, 250)
+    
+    return () => {
+      cancelAnimationFrame(t)
+      clearTimeout(focusTimeout)
+    }
   }, [])
 
   // ESC key close
   useEffect(() => {
-    const onKey = e => { if (e.key === 'Escape') handleClose() }
+    const onKey = (e) => {
+      if (e.key === 'Escape') handleClose()
+    }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
@@ -29,117 +53,143 @@ export default function ResumeModal({ onClose }) {
   const handleClose = () => {
     setVisible(false)
     // Wait for fade-out before unmounting
-    setTimeout(onClose, 220)
+    setTimeout(() => {
+      onClose()
+      // Return focus to trigger element
+      if (triggerRef.current && triggerRef.current.focus) {
+        triggerRef.current.focus()
+      }
+    }, 220)
+  }
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      handleClose()
+    }
   }
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-modal-title"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-6"
       style={{
-        background: 'rgba(0,0,0,0.6)',
-        backdropFilter: 'blur(6px)',
-        WebkitBackdropFilter: 'blur(6px)',
+        background: 'rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         opacity: visible ? 1 : 0,
         transition: 'opacity 0.22s ease',
       }}
-      onClick={handleClose}
+      onClick={handleBackdropClick}
     >
       {/* Modal panel */}
       <div
-        className="relative w-full sm:max-w-[900px] h-[95vh] sm:h-[85vh] flex flex-col rounded-t-2xl sm:rounded-2xl overflow-hidden border border-white/[0.1] bg-[#0a1628] resume-modal-panel"
+        className="relative w-full sm:max-w-[900px] max-h-[100vh] sm:max-h-[90vh] flex flex-col rounded-none sm:rounded-2xl overflow-hidden bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-xl"
         style={{
-          boxShadow: '0 24px 64px rgba(0,0,0,0.7), 0 0 0 1px rgba(13,148,136,0.25)',
           transform: visible ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(16px)',
           opacity: visible ? 1 : 0,
           transition: 'transform 0.25s ease, opacity 0.25s ease',
         }}
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* ── Top bar ── */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/[0.08] bg-[#0a1628]/95 backdrop-blur-sm flex-shrink-0 resume-modal-bar">
-          {/* Left: label */}
-          <div className="flex items-center gap-2 text-slate-300 text-sm font-mono">
-            <svg className="w-4 h-4 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-            </svg>
-            Resume
+        {/* Header */}
+        <div className="flex items-center justify-between gap-4 px-4 sm:px-6 py-4 border-b border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex-shrink-0">
+          {/* Left: Title */}
+          <div className="flex items-center gap-2 text-light-text dark:text-dark-text">
+            <FileText className="w-5 h-5 text-primary flex-shrink-0" />
+            <h2 id="resume-modal-title" className="text-base font-semibold font-mono">
+              Resume
+            </h2>
           </div>
 
-          {/* Right: actions */}
-          <div className="flex flex-wrap items-center gap-1.5 justify-end">
-            {/* Download Resume */}
+          {/* Right: Action buttons */}
+          <div className="flex items-center gap-2 flex-wrap justify-end">
+            {/* Download Resume - Primary */}
             <a
               href={RESUME_URL}
-              download="KrishtiPatel_Resume.pdf"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-teal-400 border border-teal-500/40 rounded-lg hover:bg-teal-500/10 hover:border-teal-400 transition-all duration-200 whitespace-nowrap"
+              download="Krishti_Patel_Resume.pdf"
+              className="btn-primary flex items-center gap-2 px-4 py-2 text-sm"
+              aria-label="Download resume as PDF"
             >
-              <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2v6a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+              <Download className="w-4 h-4" />
               <span className="hidden xs:inline">Download Resume</span>
-              <span className="xs:hidden">Save</span>
+              <span className="xs:hidden">Download</span>
             </a>
 
-            {/* Open Full Screen */}
+            {/* Open Full Screen - Secondary */}
             <a
               href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-400 border border-white/10 rounded-lg hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+              className="btn-secondary flex items-center gap-2 px-4 py-2 text-sm"
+              aria-label="Open resume in new tab"
             >
-              <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v6.25" />
-              </svg>
-              <span className="hidden xs:inline">Open Full Screen</span>
-              <span className="xs:hidden">Open</span>
+              <ExternalLink className="w-4 h-4" />
+              <span className="hidden sm:inline">Open Full Screen</span>
             </a>
 
             {/* Close */}
             <button
+              ref={closeButtonRef}
               onClick={handleClose}
               aria-label="Close modal"
-              className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 resume-modal-close"
+              className="w-10 h-10 flex items-center justify-center rounded-lg text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border transition-colors"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* ── Hint text ── */}
-        <p className="px-4 sm:px-5 py-2 text-xs text-slate-500 font-mono border-b border-white/[0.05] flex-shrink-0 resume-modal-hint">
-          Preview of my resume — feel free to download or open full screen.
-        </p>
+        {/* Hint strip */}
+        <div className="px-4 sm:px-6 py-2 text-xs text-light-muted dark:text-dark-muted font-mono border-b border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex-shrink-0">
+          Preview of my resume - feel free to download or open full screen.
+        </div>
 
-        {/* ── PDF body ── */}
-        <div className="flex-1 overflow-auto overscroll-contain">
-          {iframeError ? (
-            <div className="h-full flex flex-col items-center justify-center gap-5 px-6 text-center">
-              <svg className="w-12 h-12 text-teal-400/50" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-              </svg>
-              <div>
-                <p className="text-white font-semibold mb-1">Unable to preview resume.</p>
-                <p className="text-slate-400 text-sm">Please download instead.</p>
+        {/* PDF body */}
+        <div className="flex-1 overflow-auto bg-light-bg dark:bg-dark-bg">
+          {iframeError || isMobile ? (
+            // Fallback for mobile or iframe error
+            <div className="h-full min-h-[400px] flex flex-col items-center justify-center gap-6 px-6 text-center">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                <FileText className="w-8 h-8 text-primary" />
               </div>
-              <a
-                href={RESUME_URL}
-                download="KrishtiPatel_Resume.pdf"
-                className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm font-semibold rounded-xl hover:shadow-[0_0_20px_rgba(13,148,136,0.4)] transition-all duration-300"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2v6a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Download Resume
-              </a>
+              <div>
+                <p className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">
+                  {isMobile ? 'PDF Preview Not Available' : 'Unable to preview resume'}
+                </p>
+                <p className="text-sm text-light-muted dark:text-dark-muted max-w-md">
+                  {isMobile 
+                    ? 'Your browser doesn\'t support inline PDF viewing. Please download or open in a new tab.'
+                    : 'The PDF preview couldn\'t load. Please download or open in a new tab instead.'}
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={RESUME_URL}
+                  download="Krishti_Patel_Resume.pdf"
+                  className="btn-primary flex items-center gap-2 px-6 py-3"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Resume
+                </a>
+                <a
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary flex items-center gap-2 px-6 py-3"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Open Full Screen
+                </a>
+              </div>
             </div>
           ) : (
             <iframe
               src={RESUME_URL}
-              title="Krishti Patel — Resume"
-              className="w-full border-0"
-              style={{ height: '80vh', minHeight: '400px' }}
+              title="Krishti Patel Resume"
+              className="w-full h-full border-0"
+              style={{ minHeight: '80vh' }}
               onError={() => setIframeError(true)}
             />
           )}
