@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Sun, Moon, FileText } from 'lucide-react'
-import ResumeModal from './ResumeModal'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -16,7 +15,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [isDark, setIsDark] = useState(true)
-  const [showResumeModal, setShowResumeModal] = useState(false)
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
@@ -112,15 +110,6 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            {/* View Resume Button - Desktop */}
-            <button
-              onClick={() => setShowResumeModal(true)}
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-colors"
-            >
-              <FileText className="w-4 h-4" />
-              View Resume
-            </button>
-
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -161,16 +150,6 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <button
-                onClick={() => {
-                  setShowResumeModal(true)
-                  setMenuOpen(false)
-                }}
-                className="px-4 py-3 rounded-lg text-sm font-medium text-primary bg-primary/10 flex items-center gap-2 justify-center md:hidden"
-              >
-                <FileText className="w-4 h-4" />
-                View Resume
-              </button>
             </div>
           </div>
         </div>
@@ -183,9 +162,6 @@ export default function Navbar() {
           className="lg:hidden fixed inset-0 top-16 md:top-20 bg-black/20 backdrop-blur-sm -z-10"
         />
       )}
-
-      {/* Resume Modal */}
-      {showResumeModal && <ResumeModal onClose={() => setShowResumeModal(false)} />}
     </nav>
   )
 }

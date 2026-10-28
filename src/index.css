@@ -19,9 +19,9 @@
   --color-text-muted: #6B7280;
   
   /* Accent (same for both themes) */
-  --color-primary: #14B8A6;
-  --color-primary-hover: #0D9488;
-  --color-primary-light: #5EEAD4;
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-light: #60A5FA;
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -41,6 +41,10 @@
   --color-border: #1F2937;
   --color-text: #E5E7EB;
   --color-text-muted: #9CA3AF;
+  
+  /* Lighter blue for dark mode */
+  --color-primary: #3B82F6;
+  --color-primary-hover: #60A5FA;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -135,9 +139,9 @@ p {
    ═══════════════════════════════════════════════════════════════ */
 
 @layer utilities {
-  /* Gradient text - teal to emerald (hero name only) */
+  /* Gradient text - blue to lighter blue (hero name only) */
   .gradient-text {
-    @apply bg-gradient-to-r from-teal-500 via-teal-400 to-emerald-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 dark:from-blue-400 dark:via-blue-500 dark:to-blue-600 bg-clip-text text-transparent;
   }
   
   /* Container */

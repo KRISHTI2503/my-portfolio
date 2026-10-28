@@ -13,11 +13,16 @@ export default {
     },
     extend: {
       colors: {
-        // Teal accent for both themes
+        // Blue accent for both themes
         primary: {
-          DEFAULT: '#14B8A6',
-          hover: '#0D9488',
-          light: '#5EEAD4',
+          DEFAULT: '#2563EB', // blue-600 for light mode
+          hover: '#1D4ED8',   // blue-700 for light mode
+          light: '#60A5FA',   // blue-400
+        },
+        // Dark mode (uses lighter blue)
+        'primary-dark': {
+          DEFAULT: '#3B82F6', // blue-500 for dark mode
+          hover: '#60A5FA',   // blue-400 for dark mode
         },
         // Dark mode
         dark: {

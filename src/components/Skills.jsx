@@ -54,7 +54,7 @@ const skillIcons = {
   'TypeScript': { icon: SiTypescript, color: '#3178C6', darkColor: '#3178C6' },
   'JSP': { icon: Coffee, color: '#007396', darkColor: '#4B9FD5' },
   'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4', darkColor: '#06B6D4' },
-  'Responsive Design': { icon: Smartphone, color: '#14B8A6', darkColor: '#14B8A6' },
+  'Responsive Design': { icon: Smartphone, color: '#2563EB', darkColor: '#3B82F6' },
   'Django': { icon: SiDjango, color: '#092E20', darkColor: '#0C4B33' },
   'Redux': { icon: SiRedux, color: '#764ABC', darkColor: '#764ABC' },
   'Axios': { icon: Webhook, color: '#5A29E4', darkColor: '#5A29E4' },
@@ -65,8 +65,8 @@ const skillIcons = {
   'Spring MVC': { icon: SiSpring, color: '#6DB33F', darkColor: '#6DB33F' },
   'Spring Security': { icon: SiSpring, color: '#6DB33F', darkColor: '#6DB33F' },
   'Hibernate': { icon: SiHibernate, color: '#59666C', darkColor: '#BCAE79' },
-  'REST APIs': { icon: Webhook, color: '#14B8A6', darkColor: '#14B8A6' },
-  'WebSockets': { icon: Radio, color: '#010101', darkColor: '#14B8A6' },
+  'REST APIs': { icon: Webhook, color: '#2563EB', darkColor: '#3B82F6' },
+  'WebSockets': { icon: Radio, color: '#010101', darkColor: '#3B82F6' },
   'Advanced Java': { icon: Coffee, color: '#007396', darkColor: '#4B9FD5' },
 
   // ORM & Databases
@@ -76,11 +76,11 @@ const skillIcons = {
   'MySQL': { icon: SiMysql, color: '#4479A1', darkColor: '#00758F' },
 
   // Core CS & Architecture
-  'DSA': { icon: Network, color: '#14B8A6', darkColor: '#14B8A6' },
+  'DSA': { icon: Network, color: '#2563EB', darkColor: '#3B82F6' },
   'DBMS & Normalization': { icon: LucideDatabase, color: '#CC2927', darkColor: '#F29111' },
-  'Problem Solving': { icon: Puzzle, color: '#14B8A6', darkColor: '#14B8A6' },
-  'OOP': { icon: Box, color: '#14B8A6', darkColor: '#14B8A6' },
-  'Computer Networks': { icon: LucideGlobe, color: '#14B8A6', darkColor: '#14B8A6' },
+  'Problem Solving': { icon: Puzzle, color: '#2563EB', darkColor: '#3B82F6' },
+  'OOP': { icon: Box, color: '#2563EB', darkColor: '#3B82F6' },
+  'Computer Networks': { icon: LucideGlobe, color: '#2563EB', darkColor: '#3B82F6' },
 
   // Tools & Platforms
   'Git': { icon: SiGit, color: '#F05032', darkColor: '#F05032' },

@@ -1,4 +1,4 @@
-import { Briefcase, Rocket } from 'lucide-react'
+import { Briefcase } from 'lucide-react'
 import useReveal from '../hooks/useReveal'
 
 export default function Experience() {
@@ -26,11 +26,6 @@ export default function Experience() {
           {/* Open to Opportunities Card */}
           <div className="reveal">
             <div className="card p-8 text-center space-y-6 border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-transparent">
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-hover mx-auto shadow-lg">
-                <Rocket className="w-8 h-8 text-white" />
-              </div>
-
               {/* Status Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800 text-sm font-semibold">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />

@@ -35,7 +35,6 @@ const achievements = [
     description: 'AI-Integrated workflow automation engine resolving context fragmentation across developer messaging, issue tracking, and code repositories. Built customizable workflow engines triggering automated GitHub branch creation on task acceptance, integrated LangGraph orchestration for repository-aware debugging, and multi-channel urgency routing via Slack, SMS, and Email.',
     date: '2026',
     type: 'Hackathon',
-    award: 'Finalist — 2nd Prize',
     cert: '/certificates/tic-tech-toe-4.0.jpeg',
   },
   {
@@ -97,15 +96,10 @@ function AchievementCard({ item, index }) {
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2 flex-wrap">
+          <div className="flex items-center gap-2 mb-2">
             <span className="tag tag-primary text-xs font-mono">
               {item.type}
             </span>
-            {item.award && (
-              <span className="tag bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800 text-xs font-mono">
-                {item.award}
-              </span>
-            )}
           </div>
           <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-1">
             {item.title}
