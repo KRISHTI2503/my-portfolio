@@ -33,34 +33,36 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-light-bg dark:bg-dark-bg" ref={ref}>
+    <section id="contact" className="py-12 px-6 sm:py-14 md:py-16 lg:py-20 bg-light-bg dark:bg-dark-bg" ref={ref}>
       <div className="container-custom">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <span className="section-eyebrow">Get in Touch</span>
-            <h2 className="section-title">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 mb-3 text-xs font-mono text-primary bg-primary/10 rounded-full">
+              Get in Touch
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-light-text dark:text-dark-text mb-3">
               Let's <span className="gradient-text">Connect</span>
             </h2>
-            <p className="section-subtitle">
+            <p className="text-sm text-light-muted dark:text-dark-muted max-w-2xl mx-auto">
               Open to internships, collaborations, and developer opportunities.
             </p>
           </div>
 
           {/* Email Card */}
-          <div className="card p-8 mb-8 reveal">
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-                <Mail className="w-8 h-8" />
+          <div className="card p-4 mb-4 reveal">
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                <Mail className="w-5 h-5" />
               </div>
               
-              <div className="flex-1 text-center sm:text-left">
-                <p className="text-sm text-light-muted dark:text-dark-muted mb-1">
+              <div className="flex-1 text-center sm:text-left min-w-0">
+                <p className="text-xs text-light-muted dark:text-dark-muted mb-0.5">
                   Email me at
                 </p>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="text-xl font-semibold text-light-text dark:text-dark-text hover:text-primary transition-colors"
+                  className="text-sm font-medium text-light-text dark:text-dark-text hover:text-primary transition-colors break-all sm:break-normal"
                 >
                   {EMAIL}
                 </a>
@@ -68,20 +70,20 @@ export default function Contact() {
 
               <button
                 onClick={handleCopy}
-                className={`btn flex-shrink-0 ${
+                className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 text-xs font-medium rounded-lg transition-colors min-h-[44px] sm:min-h-0 ${
                   copied
-                    ? 'bg-green-600 hover:bg-green-700 text-white border-green-600'
-                    : 'btn-secondary'
+                    ? 'bg-green-600 hover:bg-green-700 text-white border border-green-600'
+                    : 'bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text hover:bg-light-bg dark:hover:bg-dark-bg border border-light-border dark:border-dark-border'
                 }`}
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4" />
+                    <Check className="w-3.5 h-3.5" />
                     Copied!
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4" />
+                    <Copy className="w-3.5 h-3.5" />
                     Copy Email
                   </>
                 )}
@@ -90,21 +92,21 @@ export default function Contact() {
           </div>
 
           {/* Social Links */}
-          <div className="grid sm:grid-cols-2 gap-4 reveal reveal-delay-1">
+          <div className="grid sm:grid-cols-2 gap-3 reveal reveal-delay-1">
             <a
               href="https://github.com/KRISHTI2503"
               target="_blank"
               rel="noopener noreferrer"
-              className="card card-hover p-6 flex items-center gap-4 group"
+              className="card card-hover p-4 flex items-center gap-3 group min-h-[60px]"
             >
-              <div className="w-12 h-12 rounded-lg bg-light-bg dark:bg-dark-bg text-light-muted dark:text-dark-muted group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center transition-colors">
-                <GitHubIcon className="w-6 h-6" />
+              <div className="w-9 h-9 rounded-lg bg-light-bg dark:bg-dark-bg text-light-muted dark:text-dark-muted group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center transition-colors flex-shrink-0">
+                <GitHubIcon className="w-5 h-5" />
               </div>
-              <div className="flex-1">
-                <p className="text-sm text-light-muted dark:text-dark-muted mb-1">
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-light-muted dark:text-dark-muted mb-0.5">
                   GitHub
                 </p>
-                <p className="font-semibold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
+                <p className="text-sm font-medium text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
                   @KRISHTI2503
                 </p>
               </div>
@@ -114,16 +116,16 @@ export default function Contact() {
               href="https://www.linkedin.com/in/krishti-patel-5027a831b/"
               target="_blank"
               rel="noopener noreferrer"
-              className="card card-hover p-6 flex items-center gap-4 group"
+              className="card card-hover p-4 flex items-center gap-3 group min-h-[60px]"
             >
-              <div className="w-12 h-12 rounded-lg bg-light-bg dark:bg-dark-bg text-light-muted dark:text-dark-muted group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center transition-colors">
-                <LinkedInIcon className="w-6 h-6" />
+              <div className="w-9 h-9 rounded-lg bg-light-bg dark:bg-dark-bg text-light-muted dark:text-dark-muted group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center transition-colors flex-shrink-0">
+                <LinkedInIcon className="w-5 h-5" />
               </div>
-              <div className="flex-1">
-                <p className="text-sm text-light-muted dark:text-dark-muted mb-1">
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-light-muted dark:text-dark-muted mb-0.5">
                   LinkedIn
                 </p>
-                <p className="font-semibold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
+                <p className="text-sm font-medium text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
                   Krishti Patel
                 </p>
               </div>
