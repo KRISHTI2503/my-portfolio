@@ -38,10 +38,8 @@ export default function Contact() {
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10">
-            <span className="inline-block px-3 py-1 mb-3 text-xs font-mono text-primary bg-primary/10 rounded-full">
-              Get in Touch
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-light-text dark:text-dark-text mb-3">
+            <span className="section-eyebrow">Get in Touch</span>
+            <h2 className="section-title">
               Let's <span className="gradient-text">Connect</span>
             </h2>
             <p className="text-sm text-light-muted dark:text-dark-muted max-w-2xl mx-auto">
