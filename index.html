@@ -28,15 +28,23 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     
-    <!-- Theme Script (prevent flash) -->
+    <!-- Theme Script - MUST run before first paint to prevent flash -->
     <script>
       (function() {
-        const theme = localStorage.getItem('theme') || 
-                     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        // Check localStorage first, then system preference
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        
+        // Apply dark class immediately
         if (theme === 'dark') {
           document.documentElement.classList.add('dark');
         }
-        localStorage.setItem('theme', theme);
+        
+        // Save to localStorage if not already set
+        if (!stored) {
+          localStorage.setItem('theme', theme);
+        }
       })();
     </script>
     
