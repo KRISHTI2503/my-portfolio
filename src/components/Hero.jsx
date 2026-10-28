@@ -1,4 +1,6 @@
-import { ArrowRight, Mail, Download } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ArrowRight, FileText } from 'lucide-react'
+import ResumeModal from './ResumeModal'
 
 // GitHub Icon SVG
 const GitHubIcon = ({ className }) => (
@@ -14,7 +16,48 @@ const LinkedInIcon = ({ className }) => (
   </svg>
 )
 
+// Mail Icon SVG
+const MailIcon = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+)
+
+const roles = ['Aspiring Developer', 'Problem Solver', 'Hackathon Enthusiast']
+
 export default function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [displayed, setDisplayed] = useState('')
+  const [typing, setTyping] = useState(true)
+  const [showResumeModal, setShowResumeModal] = useState(false)
+
+  // Typing animation
+  useEffect(() => {
+    const current = roles[roleIndex]
+    let timeout
+
+    if (typing) {
+      if (displayed.length < current.length) {
+        timeout = setTimeout(() => {
+          setDisplayed(current.slice(0, displayed.length + 1))
+        }, 70)
+      } else {
+        timeout = setTimeout(() => setTyping(false), 2000)
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1))
+        }, 35)
+      } else {
+        setRoleIndex((roleIndex + 1) % roles.length)
+        setTyping(true)
+      }
+    }
+
+    return () => clearTimeout(timeout)
+  }, [displayed, typing, roleIndex])
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     if (element) {
@@ -28,78 +71,68 @@ export default function Hero() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 section-padding"
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-violet-50 dark:from-dark-bg dark:via-dark-bg dark:to-indigo-950/20 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-light-bg dark:via-dark-bg to-primary/5 -z-10" />
       
       {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] -z-10" />
 
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Status Badge */}
+          {/* Open to Internships Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 text-sm font-medium mb-8 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            Open to Internships & Opportunities
+            Open to Internships
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-slide-up">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-light-text dark:text-dark-text mb-6 animate-slide-up">
             Hi, I'm{' '}
             <span className="gradient-text">
               Krishti Patel
             </span>
           </h1>
 
-          {/* Role */}
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-300 font-medium mb-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Full Stack Developer
-          </p>
+          {/* Typing Animation */}
+          <div className="flex items-center justify-center gap-2 my-6 min-h-[2.5rem] animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <span className="text-light-muted dark:text-dark-muted font-mono text-lg">&gt;</span>
+            <span className="text-xl md:text-2xl font-mono text-primary">
+              {displayed}
+              <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse align-middle" />
+            </span>
+          </div>
 
           {/* Tagline */}
-          <p className="text-base sm:text-lg text-indigo-600 dark:text-indigo-400 font-medium mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-base sm:text-lg text-light-muted dark:text-dark-muted font-medium mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             B.Tech IT Student • CPI: 8.57
           </p>
 
-          {/* Description */}
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            Passionate about building practical digital solutions and continuously improving my skills in web development, DSA, and modern technologies.
-          </p>
-
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <button
               onClick={() => scrollToSection('projects')}
               className="btn btn-primary w-full sm:w-auto group"
             >
-              View Projects
+              Explore Projects
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             
-            <a
-              href="/assets/KrishtiPatel_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setShowResumeModal(true)}
               className="btn btn-secondary w-full sm:w-auto group"
             >
-              <Download className="w-4 h-4" />
-              Download Resume
-            </a>
-
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="btn border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 w-full sm:w-auto"
-            >
-              Contact Me
+              <FileText className="w-4 h-4" />
+              View Resume
             </button>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+          <div className="flex items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <a
               href="https://github.com/KRISHTI2503"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="p-3 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:-translate-y-1"
+              className="p-3 rounded-lg text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-light-bg dark:hover:bg-dark-bg transition-all hover:-translate-y-1"
             >
               <GitHubIcon className="w-5 h-5" />
             </a>
@@ -108,16 +141,16 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="p-3 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:-translate-y-1"
+              className="p-3 rounded-lg text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-light-bg dark:hover:bg-dark-bg transition-all hover:-translate-y-1"
             >
               <LinkedInIcon className="w-5 h-5" />
             </a>
             <a
               href="mailto:krishti2503@gmail.com"
               aria-label="Email"
-              className="p-3 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all hover:-translate-y-1"
+              className="p-3 rounded-lg text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-light-bg dark:hover:bg-dark-bg transition-all hover:-translate-y-1"
             >
-              <Mail className="w-5 h-5" />
+              <MailIcon className="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -125,10 +158,13 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 rounded-full border-2 border-gray-300 dark:border-gray-600 flex justify-center p-2">
-          <div className="w-1 h-3 rounded-full bg-gray-400 dark:bg-gray-500" />
+        <div className="w-6 h-10 rounded-full border-2 border-light-border dark:border-dark-border flex justify-center p-2">
+          <div className="w-1 h-3 rounded-full bg-light-muted dark:bg-dark-muted" />
         </div>
       </div>
+
+      {/* Resume Modal */}
+      {showResumeModal && <ResumeModal onClose={() => setShowResumeModal(false)} />}
     </section>
   )
 }

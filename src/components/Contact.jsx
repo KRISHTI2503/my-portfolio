@@ -18,21 +18,6 @@ const LinkedInIcon = ({ className }) => (
   </svg>
 )
 
-const socials = [
-  {
-    label: 'GitHub',
-    href: 'https://github.com/KRISHTI2503',
-    icon: GitHubIcon,
-    username: '@KRISHTI2503',
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/krishti-patel-5027a831b/',
-    icon: LinkedInIcon,
-    username: 'Krishti Patel',
-  },
-]
-
 export default function Contact() {
   const ref = useReveal()
   const [copied, setCopied] = useState(false)
@@ -48,18 +33,16 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gray-50 dark:bg-dark-bg-alt" ref={ref}>
+    <section id="contact" className="section-padding bg-light-bg dark:bg-dark-bg" ref={ref}>
       <div className="container-custom">
         <div className="max-w-3xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-semibold mb-4">
-              Get in Touch
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <span className="section-eyebrow">Get in Touch</span>
+            <h2 className="section-title">
               Let's <span className="gradient-text">Connect</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            <p className="section-subtitle">
               Open to internships, collaborations, and developer opportunities.
             </p>
           </div>
@@ -67,17 +50,17 @@ export default function Contact() {
           {/* Email Card */}
           <div className="card p-8 mb-8 reveal">
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
                 <Mail className="w-8 h-8" />
               </div>
               
               <div className="flex-1 text-center sm:text-left">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                <p className="text-sm text-light-muted dark:text-dark-muted mb-1">
                   Email me at
                 </p>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="text-xl font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  className="text-xl font-semibold text-light-text dark:text-dark-text hover:text-primary transition-colors"
                 >
                   {EMAIL}
                 </a>
@@ -87,7 +70,7 @@ export default function Contact() {
                 onClick={handleCopy}
                 className={`btn flex-shrink-0 ${
                   copied
-                    ? 'bg-green-600 hover:bg-green-700 text-white'
+                    ? 'bg-green-600 hover:bg-green-700 text-white border-green-600'
                     : 'btn-secondary'
                 }`}
               >
@@ -99,7 +82,7 @@ export default function Contact() {
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    Copy
+                    Copy Email
                   </>
                 )}
               </button>
@@ -108,27 +91,43 @@ export default function Contact() {
 
           {/* Social Links */}
           <div className="grid sm:grid-cols-2 gap-4 reveal reveal-delay-1">
-            {socials.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card card-hover p-6 flex items-center gap-4 group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 flex items-center justify-center transition-colors">
-                  <social.icon className="w-6 h-6" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                    {social.label}
-                  </p>
-                  <p className="font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {social.username}
-                  </p>
-                </div>
-              </a>
-            ))}
+            <a
+              href="https://github.com/KRISHTI2503"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card card-hover p-6 flex items-center gap-4 group"
+            >
+              <div className="w-12 h-12 rounded-lg bg-light-bg dark:bg-dark-bg text-light-muted dark:text-dark-muted group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center transition-colors">
+                <GitHubIcon className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm text-light-muted dark:text-dark-muted mb-1">
+                  GitHub
+                </p>
+                <p className="font-semibold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
+                  @KRISHTI2503
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/krishti-patel-5027a831b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card card-hover p-6 flex items-center gap-4 group"
+            >
+              <div className="w-12 h-12 rounded-lg bg-light-bg dark:bg-dark-bg text-light-muted dark:text-dark-muted group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center transition-colors">
+                <LinkedInIcon className="w-6 h-6" />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm text-light-muted dark:text-dark-muted mb-1">
+                  LinkedIn
+                </p>
+                <p className="font-semibold text-light-text dark:text-dark-text group-hover:text-primary transition-colors">
+                  Krishti Patel
+                </p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
