@@ -10,6 +10,31 @@ const GitHubIcon = ({ className }) => (
 
 const projects = [
   {
+    title: 'Stream Selection Platform',
+    description: 'Responsive platform to help students explore academic streams and career options. Displays colleges, career paths, and placement opportunities. Built during the DU Hacks 4.0 hackathon.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    github: null,
+    live: 'https://panth1101.github.io/Innovators-/',
+    hackathon: true,
+  },
+  {
+    title: 'FundLedger',
+    description: 'Django-based community funding platform for transparent, democratic funding decisions. Pitchers submit proposals that admins verify, donors cast sealed votes in time-bound funding rounds, and winners are funded from category fund pools, with every transaction recorded in an auditable ledger. Includes role-based access (Pitcher, Donor, Admin), donor wallets, and public transparency dashboards. Built during the DU Hacks 5.0 hackathon.',
+    tags: ['Django', 'Python', 'HTML', 'Tailwind CSS', 'JavaScript'],
+    github: 'https://github.com/PANTH1101/fundledger-django',
+    live: 'https://fundledger-django.onrender.com/',
+    hackathon: true,
+  },
+  {
+    title: 'GuideX',
+    description: 'AI-powered career navigation platform built for TIC-TECH-TOE \'25 — DA-IICT Hackathon. An OpenAI-powered chatbot gives personalized career guidance, skill-gap analysis and interview prep, alongside an ATS-friendly resume builder, a skill assessment tool that shows market demand and related job roles, a networking hub, and a feedback portal. Features a terminal-style chat interface with light/dark mode.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'OpenAI API'],
+    github: null,
+    live: null,
+    status: 'Hackathon prototype',
+    hackathon: true,
+  },
+  {
     title: 'BugSense',
     description: 'AI-Assisted Project & Issue Management Platform built for TIC-TECH-TOE \'26 — DA-IICT Hackathon. Fixes real accountability gaps in issue tracking — being assigned a ticket and actually accepting it are two separate steps, keeping workload and velocity numbers honest. AI suggests assignees and estimates story points but never acts without human sign-off. Each project independently runs Scrum or Kanban.',
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Python', 'LangGraph', 'OpenAI API', 'PostgreSQL', 'Slack API', 'GitHub', 'Sentry'],
@@ -26,28 +51,12 @@ const projects = [
     hackathon: true,
   },
   {
-    title: 'FundLedger',
-    description: 'Django-based community funding platform for transparent, democratic funding decisions. Pitchers submit proposals that admins verify, donors cast sealed votes in time-bound funding rounds, and winners are funded from category fund pools, with every transaction recorded in an auditable ledger. Includes role-based access (Pitcher, Donor, Admin), donor wallets, and public transparency dashboards. Built during the DU Hacks 5.0 hackathon.',
-    tags: ['Django', 'Python', 'HTML', 'Tailwind CSS', 'JavaScript'],
-    github: 'https://github.com/PANTH1101/fundledger-django',
-    live: 'https://fundledger-django.onrender.com/',
-    hackathon: true,
-  },
-  {
     title: 'PaperWise',
     description: 'Academic Paper Management System built with Java. Implemented filtering, paper voting ("Mark as Useful"), and a paper request system. Integrated PostgreSQL via JDBC following MVC architecture.',
     tags: ['Java', 'Servlets', 'JSP', 'PostgreSQL'],
     github: null,
     live: null,
     status: 'Source code coming soon',
-  },
-  {
-    title: 'Stream Selection Platform',
-    description: 'Responsive platform to help students explore academic streams and career options. Displays colleges, career paths, and placement opportunities. Built during the DU Hacks 4.0 hackathon.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    github: null,
-    live: 'https://panth1101.github.io/Innovators-/',
-    hackathon: true,
   },
   {
     title: 'Expense Tracker',
