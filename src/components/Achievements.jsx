@@ -21,7 +21,7 @@ const achievements = [
     description: 'Developed an Intelligent Virtual Career Advisor to guide students in making informed academic and career decisions.',
     date: '2025',
     type: 'Hackathon',
-    cert: '/certificates/tic_tech_Toe_certi_2026.pdf',
+    cert: '/certificates/tic-tech-toe-4.0.jpeg',
   },
   {
     title: 'Vibe2Ship — Coding Ninjas × Google for Developers',
@@ -35,7 +35,7 @@ const achievements = [
     description: 'AI-Integrated workflow automation engine resolving context fragmentation across developer messaging, issue tracking, and code repositories. Built customizable workflow engines triggering automated GitHub branch creation on task acceptance, integrated LangGraph orchestration for repository-aware debugging, and multi-channel urgency routing via Slack, SMS, and Email.',
     date: '2026',
     type: 'Hackathon',
-    cert: '/certificates/tic-tech-toe-4.0.jpeg',
+    cert: '/certificates/tic_tech_Toe_certi_2026.pdf',
   },
   {
     title: 'CCNA: Introduction to Networks',
