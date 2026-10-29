@@ -57,14 +57,6 @@ const projects = [
     live: null,
     status: 'Source code coming soon',
   },
-  {
-    title: 'Expense Tracker',
-    description: 'Java application to record and categorize daily expenses. Applied Object-Oriented Programming principles for modular and maintainable design.',
-    tags: ['Java', 'OOP'],
-    github: null,
-    live: null,
-    status: 'Project under development',
-  },
 ]
 
 function ProjectCard({ project, index }) {
