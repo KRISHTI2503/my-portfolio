@@ -38,6 +38,14 @@ const achievements = [
     cert: '/certificates/tic_tech_Toe_certi_2026.pdf',
   },
   {
+    title: 'AWS Students Community Day Nadiad 2026',
+    description: 'Participated in the Technical Track – Agentic AI at AWS Students Community Day Nadiad 2026, a student-led cloud and AI conference held on 26 September 2026 at Dharmsinh Desai University, Nadiad.',
+    date: '2026',
+    type: 'Event',
+    org: 'AWS Student Builder Group, Dharmsinh Desai University',
+    cert: '/certificates/aws_event.png',
+  },
+  {
     title: 'CCNA: Introduction to Networks',
     description: 'Completed Cisco Networking Academy course covering network configuration, IPv4/IPv6 addressing, OSI model layers, switching, and security best practices.',
     date: '2026',
