@@ -55,6 +55,14 @@ const achievements = [
     badge: { label: 'View Badge', href: '/certificates/aws.png' },
     cert: { label: 'View Certificate', href: '/certificates/aws-cert.jpeg' },
   },
+  {
+    title: 'AWS Students Community Day 2026',
+    description: 'Participant in the Technical Track (Agentic AI) at AWS Students Community Day 2026, held on 26 September 2026 at DDU, Nadiad.',
+    date: '2026',
+    type: 'Event',
+    org: 'AWS Student Builder Group, DDU Nadiad',
+    cert: '/certificates/aws_event.png',
+  },
 ]
 
 const codingProfiles = [
